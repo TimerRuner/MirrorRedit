@@ -17,7 +17,7 @@ app.get("/auth", (req, res) => {
             `grant_type=authorization_code&code=${req.query.code}&redirect_uri=https://redddit-react.herokuapp.com/auth`,
             {
                 auth: {
-                    username: process.env.CLIENT_ID,
+                    username: "yZFoPqgmUOlSa7jFzZSY6Q",
                     password: "blC7l1fZ3ToMnzfhapqQcAezFrkb_g",
                 },
                 headers: {
