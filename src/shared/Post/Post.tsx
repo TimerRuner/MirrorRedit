@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import * as ReactDOM from "react-dom"
 import styles from "./post.css"
-import { CommentForm } from "../CommentForm"
-
+import { CommentFormContainer } from "../CommentFormContainer"
 interface IPost {
     onClose?: () => void
 }
@@ -55,7 +54,7 @@ export function Post(props: IPost) {
                     распределены по отраслям.
                 </p>
             </div>
-            <CommentForm />
+            <CommentFormContainer />
         </div>,
         node
     )

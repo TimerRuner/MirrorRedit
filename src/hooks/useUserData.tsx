@@ -1,28 +1,43 @@
 import React, { useState, useEffect, useContext } from "react"
 import axios from "axios"
 import { tokenContext } from "../shared/context/tokenContext"
+import { useDispatch, useSelector } from "react-redux"
+import {
+    meRequest,
+    meRequestError,
+    meRequestSuccess,
+} from "../store/me/actions"
+import { RootState } from "../store/store"
 
-interface IUserData {
+export interface IUserData {
     name?: string
     iconImg?: string
 }
 
 export function useUserData() {
-    const [data, setData] = useState<IUserData>({})
+    const data = useSelector<RootState, IUserData>((state) => state.me.data)
     const token = useContext(tokenContext)
+    const dispatch = useDispatch()
+
     useEffect(() => {
+        if (!token) return
+        dispatch(meRequest())
         axios
             .get("https://oauth.reddit.com/api/v1/me", {
                 headers: { Authorization: `bearer ${token}` },
             })
             .then((resp) => {
                 const userData = resp.data
-                setData({
+                const myUserData = {
                     name: userData.name,
                     iconImg: userData.snoovatar_img,
-                })
+                }
+                dispatch(meRequestSuccess(myUserData))
             })
-            .catch(console.log)
+            .catch((error) => {
+                console.log(error)
+                dispatch(meRequestError(String(error)))
+            })
     }, [token])
 
     return [data]
