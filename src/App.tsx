@@ -11,8 +11,9 @@ import { UserContextProvider } from "./shared/context/userContext"
 import { applyMiddleware, createStore, Middleware } from "redux"
 import { Provider } from "react-redux"
 import { composeWithDevTools } from "redux-devtools-extension"
-import { rootReducer } from "./store/store"
+
 import thunk from "redux-thunk"
+import { rootReducer } from "./store/store"
 
 const store = createStore(
     rootReducer,
