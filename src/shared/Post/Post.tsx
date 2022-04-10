@@ -2,19 +2,22 @@ import React, { useEffect, useRef } from "react"
 import * as ReactDOM from "react-dom"
 import styles from "./post.css"
 import { CommentFormContainer } from "../CommentFormContainer"
+import { useNavigate } from "react-router"
 interface IPost {
     onClose?: () => void
 }
 
 export function Post(props: IPost) {
     const ref = useRef<HTMLDivElement>(null)
+    const history = useNavigate()
     useEffect(() => {
         function handleClick(event: MouseEvent) {
             if (
                 event.target instanceof Node && //? перевірка, що event.target - node
                 !ref.current?.contains(event.target)
             ) {
-                props.onClose?.()
+                // props.onClose?.()
+                history("/")
             }
         }
 

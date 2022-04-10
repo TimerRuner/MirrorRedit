@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import "./main.global.css"
 import { hot } from "react-hot-loader/root"
 import { Layout } from "./shared/Layout"
@@ -11,9 +11,10 @@ import { UserContextProvider } from "./shared/context/userContext"
 import { applyMiddleware, createStore, Middleware } from "redux"
 import { Provider } from "react-redux"
 import { composeWithDevTools } from "redux-devtools-extension"
-
 import thunk from "redux-thunk"
 import { rootReducer } from "./store/store"
+import { BrowserRouter, Router, Routes, Route } from "react-router-dom"
+import { Post } from "./shared/Post"
 
 const store = createStore(
     rootReducer,
@@ -21,17 +22,33 @@ const store = createStore(
 )
 
 export function AppCopmonent() {
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
     const [token] = useToken()
     return (
         <Provider store={store}>
             <tokenContext.Provider value={token}>
                 <UserContextProvider>
-                    <Layout>
-                        <Header />
-                        <Content>
-                            <CardsList />
-                        </Content>
-                    </Layout>
+                    {mounted && (
+                        <BrowserRouter>
+                            <Layout>
+                                <Header />
+                                <Content>
+                                    <CardsList />
+                                    <Routes>
+                                        <Route
+                                            path="/posts/:id"
+                                            element={<Post />}
+                                        />
+                                    </Routes>
+                                </Content>
+                            </Layout>
+                        </BrowserRouter>
+                    )}
                 </UserContextProvider>
             </tokenContext.Provider>
         </Provider>

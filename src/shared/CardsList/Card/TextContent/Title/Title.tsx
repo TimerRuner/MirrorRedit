@@ -1,30 +1,18 @@
 import React, { useState } from "react"
 import styles from "./title.css"
 import { Post } from "../../../../Post"
+import { Link } from "react-router-dom"
 
 interface Props {
     title: string
 }
 
 export function Title({ title }: Props) {
-    const [isModalOpened, setIsModalOpened] = useState(false)
-
     return (
         <h2 className={styles.title}>
-            <a
-                href="#post-url"
-                className={styles.postLink}
-                onClick={() => setIsModalOpened(true)}
-            >
+            <Link to="/posts/1" className={styles.postLink}>
                 {title}
-            </a>
-            {isModalOpened && (
-                <Post
-                    onClose={() => {
-                        setIsModalOpened(false)
-                    }}
-                />
-            )}
+            </Link>
         </h2>
     )
 }
