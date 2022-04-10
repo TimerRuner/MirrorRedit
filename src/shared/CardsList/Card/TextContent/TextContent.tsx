@@ -4,14 +4,18 @@ import { UserLink } from "./UserLink"
 import { Title } from "./Title"
 import { CreatedAt } from "./CreatedAt"
 
-export function TextContent() {
+interface Props {
+    title: string
+}
+
+export function TextContent({ title }: Props) {
     return (
         <div className={styles.textContent}>
             <div className={styles.metaData}>
                 <UserLink />
                 <CreatedAt />
             </div>
-            <Title />
+            <Title title={title} />
         </div>
     )
 }

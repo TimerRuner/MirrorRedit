@@ -2,7 +2,11 @@ import React, { useState } from "react"
 import styles from "./title.css"
 import { Post } from "../../../../Post"
 
-export function Title() {
+interface Props {
+    title: string
+}
+
+export function Title({ title }: Props) {
     const [isModalOpened, setIsModalOpened] = useState(false)
 
     return (
@@ -12,7 +16,7 @@ export function Title() {
                 className={styles.postLink}
                 onClick={() => setIsModalOpened(true)}
             >
-                Следует отметить, что новая модель организационной...
+                {title}
             </a>
             {isModalOpened && (
                 <Post

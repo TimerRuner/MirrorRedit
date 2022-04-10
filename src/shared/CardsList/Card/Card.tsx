@@ -5,10 +5,14 @@ import { Preview } from "./Preview"
 import { Menu } from "./Menu"
 import { Controls } from "./Controls"
 
-export function Card() {
+interface Props {
+    title: string
+}
+
+export function Card({ title }: Props) {
     return (
         <li className={styles.card}>
-            <TextContent />
+            <TextContent title={title} />
             <Preview />
             <Menu />
             <Controls />

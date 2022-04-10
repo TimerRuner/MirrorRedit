@@ -29,7 +29,7 @@ button {
         background-color: transparent;
         flex-flow: row nowrap;
         max-height: 107px;
-        padding: 0 40px;
+        padding: 20px 40px;
     }
     .card > * {
         flex: 0 0;
