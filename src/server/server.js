@@ -14,11 +14,11 @@ app.get("/auth", (req, res) => {
     axios
         .post(
             "https://www.reddit.com/api/v1/access_token",
-            `grant_type=authorization_code&code=${req.query.code}&redirect_uri=http://localhost:3000/auth`,
+            `grant_type=authorization_code&code=${req.query.code}&redirect_uri=https://redddit-react.herokuapp.com/auth`,
             {
                 auth: {
                     username: process.env.CLIENT_ID,
-                    password: "nIHJjIdoJKauRQD0ylPlk41lI5TuvQ",
+                    password: "blC7l1fZ3ToMnzfhapqQcAezFrkb_g",
                 },
                 headers: {
                     "Content-type": "application/x-www-form-urlencoded",

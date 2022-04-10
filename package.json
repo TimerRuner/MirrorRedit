@@ -9,9 +9,9 @@
     "scripts": {
         "build:dev": "env NODE_ENV=development webpack --config webpack.config.js",
         "build": "env NODE_ENV=production webpack --config webpack.config.js",
-        "dev": "env NODE_ENV=development CLIENT_ID=53DbZSXMFRvfrGnpexK2_g node ./bin/dev.js",
+        "dev": "env NODE_ENV=development CLIENT_ID=yZFoPqgmUOlSa7jFzZSY6Q node ./bin/dev.js",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node ./dist/server/server.js"
+        "start": "env CLIENT_ID=yZFoPqgmUOlSa7jFzZSY6Q SECRET=blC7l1fZ3ToMnzfhapqQcAezFrkb_g node ./dist/server/server.js"
     },
     "author": "",
     "license": "ISC",
